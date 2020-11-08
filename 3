@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
+using System.Text;
+
+namespace ConsoleApp2
+{
+    class Cat
+    {
+      
+        public string name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+
+            set
+            {
+                name = value;
+            }
+        }
+        public DateTime Birthday
+
+
+        {
+            get
+            {
+                return Birthday;
+            }
+
+            set
+            {
+                Birthday = value;
+            }
+        }
+
+        private int age;
+
+        public int Age
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    Console.WriteLine("Возраст должен быть больше 0");
+                }
+                else
+                {
+                    age = value;
+                }
+            }
+            get { return age; }
+        }
+
+        public byte hungrtstatus;
+
+        public byte HungrtStatus
+        {
+            set
+            {
+                if (value < 0)
+                {
+                    if (value <= 10)
+                    {
+                        Console.WriteLine($"Кошка умирает от голода");
+                    }
+                    if (10 < value && value <= 40)
+                    {
+                        Console.WriteLine($"Кошка очень голодна");
+                    }
+                    if (40 < value && value <= 70)
+                    {
+                        Console.WriteLine($"Кошка хочет кушать");
+                    }
+                    if (70 < value && value <= 90)
+                    {
+                        Console.WriteLine($"Кошка не против перекусить");
+                    }
+                    if (value < 90)
+                    {
+                        Console.WriteLine($"Кошка недавно поела");
+                    }
+                }
+                else
+                {
+                    hungrtstatus = value;
+                }
+
+
+            }
+            get { return hungrtstatus; }
+
+        }
+
+        public void GetStatus()
+        {
+            Console.WriteLine($"Кошку зовут {Name}");
+            Console.WriteLine($"Возраст кошки {Age}");
+            Console.WriteLine($"Голод {hungrtstatus}");
+
+        }
+
+        public void MakeNoise()
+        {
+            Console.WriteLine($"{Name} мяукает");
+            Console.WriteLine($"Кошке по имени {Name} уже {age} лет");
+        }
+
+        public event EventHandler HungryStatusChanged;
+
+    }
+}
